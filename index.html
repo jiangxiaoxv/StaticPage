@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 引入样式 -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #wrap {
+        /* padding-left: 10%;
+        padding-right: 10%; */
+      }
+      .head-title-wrap {
+        background-image: url("./assets/beijing.png");
+        height: 300px;
+        background-size: 100% 100%;
+        /* padding-left: 15%;
+        padding-right: 15%; */
+      }
+      .head-title-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+      }
+      .head-title-content .head-text {
+        text-align: center;
+        font-size: 42px;
+        height: 75px;
+        line-height: 75px;
+        color: white;
+      }
+      .head-title-content .head-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* background-color: red; */
+        height: 60px;
+        background: rgba(1, 83, 176, 0.5);
+        display: flex;
+        /* padding: 0 20px; */
+        padding-left: 12%;
+        padding-right: 12%;
+      }
+      .head-nav-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+      .head-nav-list-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: min-content;
+        cursor: pointer;
+        position: relative;
+        height: 100%;
+        color: white;
+        color: white;
+        font-size: 16px;
+      }
+
+      .head-nav-search {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        margin-left: 30px;
+      }
+
+      .head-nav-search .el-input .el-input__inner {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        color: white;
+        font-size: 14px;
+        height: 36px;
+        /* border: 1px solid #FFFFFF; */
+      }
+
+      /* 谷歌 */
+      .head-nav-search .el-input .el-input__inner::-webkit-input-placeholder {
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+      }
+      /* 火狐 */
+      .head-nav-search .el-input .el-input__inner:-moz-placeholder {
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+      }
+      /*ie*/
+      .head-nav-search .el-input .el-input__inner:-ms-input-placeholder {
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .active_nav_item::after {
+        content: "";
+        background: #05b0fe;
+        height: 5px;
+        position: absolute;
+        margin: auto;
+        bottom: 0px;
+        width: 180%;
+        border-radius: 4px;
+      }
+    </style>
+
+    <style>
+      .main-content {
+        background: linear-gradient(180deg, #ebf1ff 0%, #ffffff 100%);
+        min-height: calc(100vh - 300px);
+        padding-left: 12%;
+        padding-right: 12%;
+        padding-top: 32px;
+      }
+      .el-carousel__item:nth-child(3n) {
+        background-color: red;
+      }
+      .el-carousel__item:nth-child(3n + 1) {
+        background-color: yellow;
+      }
+      .el-carousel__item:nth-child(3n + 2) {
+        background-color: green;
+      }
+
+      .main-content-carousel {
+      }
+    </style>
+
+    <style>
+      .dynamic-and-file {
+        padding-top: 32px;
+        /* display: flex; */
+      }
+      .dynamic {
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.85);
+      }
+      .dynamic-content {
+        padding-top: 20px;
+      }
+      .dynamic-img {
+        height: 150px;
+        background-color: red;
+        border-radius: 4px;
+      }
+      .dynamic-list-text {
+        border: 1px dashed rgba(45, 46, 42, 1);
+        padding: 1px;
+      }
+      .dynamic-list-date {
+        border: 1px dashed rgba(45, 46, 42, 1);
+        padding: 1px;
+      }
+      .file {
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.85);
+      }
+
+      .common-title-text {
+        color: rgba(25, 100, 177, 1);
+        font-size: 16px;
+        position: relative;
+        width: fit-content;
+      }
+      .common-title-text::after {
+        position: absolute;
+        content: "";
+        bottom: -5.5px;
+        left: 0px;
+        height: 2px;
+        width: 100%;
+        background-color: rgba(1, 67, 160, 1);
+      }
+      .common-line {
+        width: 100%;
+        height: 1px;
+        margin-top: 4px;
+        background: rgba(16, 78, 165, 0.5);
+      }
+      .common-content-text {
+        font-size: 14px;
+        color: rgba(45, 46, 42, 1);
+        position: relative;
+      }
+    </style>
+
+    <style>
+      .img-list {
+        display: flex;
+        margin: 20px 0;
+        gap: 10px;
+      }
+      .img-list-img1 {
+        flex: 1;
+        background-color: red;
+        height: 92px;
+        border-radius: 4px;
+      }
+      .img-list-img2 {
+        background-color: green;
+        flex: 1;
+        height: 92px;
+        border-radius: 4px;
+      }
+      .img-list-img3 {
+        background-color: yellow;
+        flex: 1;
+        height: 92px;
+        border-radius: 4px;
+      }
+    </style>
+
+    <style>
+      .activity-style {
+        gap: 15px;
+      }
+      .activity-style-img1 {
+        background-color: red;
+        height: 100px;
+        width: 100%;
+      }
+      .activity-style-img2 {
+        background-color: yellow;
+        height: 100px;
+      }
+      .activity-style-img3 {
+        background-color: gray;
+        height: 100px;
+        width: 100%;
+      }
+      .activity-style-img4 {
+        background-color: orange;
+        height: 100px;
+        width: 100%;
+      }
+      .common-activity-style {
+        height: 49px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+
+    <style>
+      .friendly-links {
+      }
+      .friendly-links-text {
+        color: rgba(255, 63, 59, 1);
+        font-size: 16px;
+      }
+      .friendly-links-text-gray {
+        color: rgba(45, 46, 42, 1);
+        font-size: 16px;
+      }
+      .friendly-links-line {
+        width: 1px;
+        height: 12px;
+        background-color: rgba(187, 187, 187, 1);
+      }
+    </style>
+
+    <style>
+      .footer {
+        margin-top: 20px;
+        background: #474E62;
+        border: 1px solid #979797;
+        padding: 34px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footer-text {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1);
+      }
+      .footer-public-institutions {
+        width: 80px;
+        height: 70px;
+        background-image: url('./assets/shiyedanwei.png');
+        background-repeat: no-repeat;
+      }
+      .footer-qr1 {
+        width: 76px;
+        height: 76px;
+        background-image: url('./assets/erweima1.png');
+      }
+
+      .footer-qr2 {
+        width: 76px;
+        height: 76px;
+        background-image: url('./assets/erweima2.png');
+
+      }
+    </style>
+  </head>
+  <!-- 生产环境版本，优化了尺寸和速度 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    -->
+  <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <body>
+    <div id="wrap">
+      <div class="wrap-all">
+        <div class="head-title-wrap">
+          <div class="head-title-content">
+            <div class="head-text">{{title}}</div>
+            <div class="head-nav">
+              <el-row
+                style="
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <el-col :span="19" style="height: 100%">
+                  <div class="head-nav-list">
+                    <div
+                      v-for="navItem in navList"
+                      @click="handleNavItemClick(navItem)"
+                      :key="navItem"
+                      class="head-nav-list-item"
+                      :class="{ 'active_nav_item': navItem ==  activeNav}"
+                    >
+                      {{ navItem }}
+                    </div>
+                  </div>
+                </el-col>
+                <el-col :span="5" class="head-nav-search" style="height: 100%">
+                  <el-input
+                    placeholder="请输入关键词进行搜索"
+                    v-model="headInput"
+                    clearable
+                  >
+                  </el-input>
+                </el-col>
+              </el-row>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-content">
+          <div class="main-content-carousel">
+            <el-carousel :interval="4000" type="card" height="200px">
+              <el-carousel-item v-for="item in 3" :key="item">
+                <div></div>
+              </el-carousel-item>
+            </el-carousel>
+          </div>
+
+          <div class="dynamic-and-file">
+            <div
+              style="display: flex; gap: 20px; justify-content: space-between"
+            >
+              <div style="flex: 2">
+                <div class="dynamic">
+                  <div class="dynamic-title common-title-text">中心动态</div>
+                  <div class="common-line"></div>
+                  <div
+                    class="dynamic-content"
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      justify-content: space-between;
+                    "
+                  >
+                    <div style="flex: 9" class="dynamic-img"></div>
+                    <div style="flex: 9" class="dynamic-list-text">
+                      <div
+                        v-for="dynamicItem in dynamicList"
+                        style="
+                          display: flex;
+                          gap: 10px;
+                          justify-content: space-between;
+                        "
+                      >
+                        <div
+                          class="common-content-text"
+                          style="display: flex; align-items: center"
+                        >
+                          <div
+                            style="
+                              width: 4px;
+                              height: 4px;
+                              border-radius: 50%;
+                              background-color: #d8d8d8;
+                              margin-right: 3px;
+                              margin-left: 3px;
+                            "
+                          ></div>
+                          <div>{{dynamicItem.title}}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dynamic-list-date">
+                      <div
+                        v-for="dynamicItem in dynamicList"
+                        class="common-content-text"
+                      >
+                        {{dynamicItem.date}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="flex: 1">
+                <div class="file">
+                  <div class="dynamic-title common-title-text">政策文件</div>
+                  <div class="common-line"></div>
+
+                  <div
+                    class="dynamic-content"
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      justify-content: space-between;
+                    "
+                  >
+                    <div style="flex: 9" class="dynamic-list-text">
+                      <div
+                        v-for="fileItem in fileList"
+                        style="
+                          display: flex;
+                          gap: 10px;
+                          justify-content: space-between;
+                        "
+                      >
+                        <div
+                          class="common-content-text"
+                          style="display: flex; align-items: center"
+                        >
+                          <div
+                            style="
+                              width: 4px;
+                              height: 4px;
+                              border-radius: 50%;
+                              background-color: #d8d8d8;
+                              margin-right: 3px;
+                              margin-left: 3px;
+                            "
+                          ></div>
+                          <div>{{fileItem.title}}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dynamic-list-date">
+                      <div
+                        v-for="fileItem in fileList"
+                        class="common-content-text"
+                      >
+                        {{fileItem.date}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="img-list">
+            <div class="img-list-img1"></div>
+            <div class="img-list-img2"></div>
+            <div class="img-list-img3"></div>
+          </div>
+
+          <div class="dynamic-and-file" style="padding-top: 0px">
+            <div
+              style="display: flex; gap: 20px; justify-content: space-between"
+            >
+              <div style="flex: 1">
+                <div class="dynamic">
+                  <div class="dynamic-title common-title-text">业务工作</div>
+                  <div class="common-line"></div>
+                  <div
+                    class="dynamic-content"
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      justify-content: space-between;
+                    "
+                  >
+                    <div style="flex: 9" class="dynamic-list-text">
+                      <div
+                        v-for="businessItem in businessList"
+                        style="
+                          display: flex;
+                          gap: 10px;
+                          justify-content: space-between;
+                        "
+                      >
+                        <div
+                          class="common-content-text"
+                          style="display: flex; align-items: center"
+                        >
+                          <div
+                            style="
+                              width: 4px;
+                              height: 4px;
+                              border-radius: 50%;
+                              background-color: #d8d8d8;
+                              margin-right: 3px;
+                              margin-left: 3px;
+                            "
+                          ></div>
+                          <div>{{businessItem.title}}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dynamic-list-date">
+                      <div
+                        v-for="businessItem in businessList"
+                        class="common-content-text"
+                      >
+                        {{businessItem.date}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="flex: 1">
+                <div class="file">
+                  <div class="dynamic-title common-title-text">行业战线</div>
+                  <div class="common-line"></div>
+
+                  <div
+                    class="dynamic-content"
+                    style="
+                      display: flex;
+                      gap: 10px;
+                      justify-content: space-between;
+                    "
+                  >
+                    <div style="flex: 9" class="dynamic-list-text">
+                      <div
+                        v-for="industryItem in industryList"
+                        style="
+                          display: flex;
+                          gap: 10px;
+                          justify-content: space-between;
+                        "
+                      >
+                        <div
+                          class="common-content-text"
+                          style="display: flex; align-items: center"
+                        >
+                          <div
+                            style="
+                              width: 4px;
+                              height: 4px;
+                              border-radius: 50%;
+                              background-color: #d8d8d8;
+                              margin-right: 3px;
+                              margin-left: 3px;
+                            "
+                          ></div>
+                          <div>{{industryItem.title}}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dynamic-list-date">
+                      <div
+                        v-for="industryItem in industryList"
+                        class="common-content-text"
+                      >
+                        {{industryItem.date}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="activity-style" style="margin-top: 20px">
+            <div>
+              <div class="dynamic-title common-title-text">活动风采</div>
+              <div class="common-line"></div>
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 20px;
+                "
+              >
+                <div style="flex: 1">
+                  <div class="activity-style-img1"></div>
+                  <div class="common-activity-style">
+                    科技馆“科学课”走进乌鲁木齐…
+                  </div>
+                </div>
+                <div style="flex: 1">
+                  <div class="activity-style-img2"></div>
+                  <div class="common-activity-style">
+                    科技馆“科学课”走进乌鲁木齐…
+                  </div>
+                </div>
+                <div style="flex: 1">
+                  <div class="activity-style-img3"></div>
+                  <div class="common-activity-style">
+                    科技馆“科学课”走进乌鲁木齐…
+                  </div>
+                </div>
+                <div style="flex: 1">
+                  <div class="activity-style-img4"></div>
+                  <div class="common-activity-style">
+                    科技馆“科学课”走进乌鲁木齐…
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="friendly-links" style="margin-top: 20px">
+            <div>
+              <div class="dynamic-title common-title-text">友情链接</div>
+              <div class="common-line"></div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 20px;
+                "
+              >
+                <div class="friendly-links-text">中国政府网</div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text">教育部</div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text">自治区人民政府网</div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text-gray">
+                  <span>教育部相关网站</span>
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text-gray">
+                  <span>省属单位</span>
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text-gray">
+                  <span>区内本科院校</span>
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text-gray">
+                  <span>区内职业院校</span>
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <div class="friendly-links-line"></div>
+
+                <div class="friendly-links-text-gray">
+                  <span>其他网站</span>
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div style="display: flex;">
+            <div class="footer-public-institutions"></div>
+            <div class="footer-text" style="display: flex; flex-direction: column; align-items: start; justify-content: center; margin-left: 20px;">
+              <div style="display: flex;">
+                <p>自治区教育资源与技术发现中心（新疆教育电视台）</p>
+                <p style="margin-left: 40px;">保留所有权利，未经允许不得复制、镜像站长统计</p>
+              </div>
+              <div>地址：乌鲁木齐市光明路369号       邮编：830049   </div>
+              <div>ic备案号：新ICP备05003757-2      公安网备案：        新公网安备65010202000053号    </div>
+            </div>
+            <div class="footer-qr1" style="margin-left: 20px;"></div>
+            <div class="footer-qr2" style="margin-left: 20px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: "#wrap",
+      data: {
+        title: "自治区教育资源与技术发现中心（新疆教育电视台）",
+        activeNav: "首页",
+        headInput: "",
+        carouselList: [],
+        navList: [
+          "首页",
+          "单位概况",
+          "党建工作",
+          "中心动态",
+          "政策文件",
+          "业务工作",
+          "行业战线",
+          "新疆教育电台",
+        ],
+        dynamicList: [
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 同心助康育活风--",
+            date: "12: 12",
+          },
+        ],
+        fileList: [
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 -",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 -",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+        ],
+        businessList: [
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 -",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 -",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+        ],
+        industryList: [
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 -",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 -",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+          {
+            title: "全康洁家访搭“康”析",
+            date: "12: 01",
+          },
+          {
+            title: "全康洁家访搭“康”析 ",
+            date: "12: 12",
+          },
+        ],
+      },
+      methods: {
+        handleNavItemClick(item) {
+          this.activeNav = item;
+        },
+      },
+    });
+  </script>
+</html>
