@@ -124,7 +124,11 @@
 
     <style>
       .main-content {
-        background: linear-gradient(180deg, #ebf1ff 0%, #ffffff 100%);
+        background: linear-gradient(180deg, #ebf1ff 0%, #ffffff 100%),
+          url("./assets/bg.png");
+        background-repeat: no-repeat, no-repeat;
+        background-size: 50% auto, 50% auto;
+        background-position: left top, right bottom; /* 图片从右下角开始 */
         min-height: calc(100vh - 300px);
         padding-left: 12%;
         padding-right: 12%;
@@ -280,10 +284,11 @@
       }
     </style>
 
+    <!-- footer -->
     <style>
       .footer {
         margin-top: 20px;
-        background: #474E62;
+        background: #474e62;
         border: 1px solid #979797;
         padding: 34px 0px;
         display: flex;
@@ -297,20 +302,28 @@
       .footer-public-institutions {
         width: 80px;
         height: 70px;
-        background-image: url('./assets/shiyedanwei.png');
+        background-image: url("./assets/shiyedanwei.png");
         background-repeat: no-repeat;
       }
       .footer-qr1 {
         width: 76px;
         height: 76px;
-        background-image: url('./assets/erweima1.png');
+        background-image: url("./assets/erweima1.png");
       }
 
       .footer-qr2 {
         width: 76px;
         height: 76px;
-        background-image: url('./assets/erweima2.png');
+        background-image: url("./assets/erweima2.png");
+      }
 
+      .police-img {
+        background-image: url('./assets/police.png');
+        width: 15px;
+        height: 15px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin: 0 6px;
       }
     </style>
   </head>
@@ -696,18 +709,33 @@
         </div>
 
         <div class="footer">
-          <div style="display: flex;">
+          <div style="display: flex">
             <div class="footer-public-institutions"></div>
-            <div class="footer-text" style="display: flex; flex-direction: column; align-items: start; justify-content: center; margin-left: 20px;">
-              <div style="display: flex;">
+            <div
+              class="footer-text"
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: center;
+                margin-left: 20px;
+              "
+            >
+              <div style="display: flex">
                 <p>自治区教育资源与技术发现中心（新疆教育电视台）</p>
-                <p style="margin-left: 40px;">保留所有权利，未经允许不得复制、镜像站长统计</p>
+                <p style="margin-left: 40px">
+                  保留所有权利，未经允许不得复制、镜像站长统计
+                </p>
               </div>
-              <div>地址：乌鲁木齐市光明路369号       邮编：830049   </div>
-              <div>ic备案号：新ICP备05003757-2      公安网备案：        新公网安备65010202000053号    </div>
+              <div>地址：乌鲁木齐市光明路369号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邮编：830049</div>
+              <div style="display: flex; align-items: center;">
+                <span>ic备案号：新ICP备05003757-2     &nbsp;&nbsp;&nbsp;公安网备案：</span>
+                <span class="police-img"></span>
+                <span>新公网安备65010202000053号</span>
+              </div>
             </div>
-            <div class="footer-qr1" style="margin-left: 20px;"></div>
-            <div class="footer-qr2" style="margin-left: 20px;"></div>
+            <div class="footer-qr1" style="margin-left: 20px"></div>
+            <div class="footer-qr2" style="margin-left: 20px"></div>
           </div>
         </div>
       </div>
