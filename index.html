@@ -82,11 +82,16 @@
         margin-left: 30px;
       }
 
+      .head-nav-search .el-input__suffix {
+        color: white;
+        transform: translate(-2px, -2px);
+      }
+
       .head-nav-search .el-input .el-input__inner {
         background: rgba(255, 255, 255, 0.4);
         border-radius: 20px;
         color: white;
-        font-size: 14px;
+        font-size: 12px;
         height: 36px;
         /* border: 1px solid #FFFFFF; */
       }
@@ -95,19 +100,19 @@
       .head-nav-search .el-input .el-input__inner::-webkit-input-placeholder {
         color: #fff;
         text-align: center;
-        font-size: 14px;
+        font-size: 12px;
       }
       /* 火狐 */
       .head-nav-search .el-input .el-input__inner:-moz-placeholder {
         color: #fff;
         text-align: center;
-        font-size: 14px;
+        font-size: 12px;
       }
       /*ie*/
       .head-nav-search .el-input .el-input__inner:-ms-input-placeholder {
         color: #fff;
         text-align: center;
-        font-size: 14px;
+        font-size: 12px;
       }
 
       .active_nav_item::after {
@@ -121,13 +126,13 @@
         border-radius: 4px;
       }
     </style>
-
+    <!-- 轮播图 -->
     <style>
       .main-content {
         background: linear-gradient(180deg, #ebf1ff 0%, #ffffff 100%),
           url("./assets/bg.png");
         background-repeat: no-repeat, no-repeat;
-        background-size: 100% 50%, 50% 100%;
+        background-size: 100% 50%, 50% auto;
         background-position: left top, right bottom; /* 图片从右下角开始 */
         min-height: calc(100vh - 300px);
         padding-left: 12%;
@@ -148,6 +153,7 @@
       }
     </style>
 
+    <!-- 中心动态 -->
     <style>
       .dynamic-and-file {
         padding-top: 32px;
@@ -215,32 +221,40 @@
       }
     </style>
 
+    <!-- 图片列表 -->
     <style>
       .img-list {
         display: flex;
         margin: 20px 0;
-        gap: 10px;
+        gap: 20px;
       }
       .img-list-img1 {
         flex: 1;
-        background-color: red;
         height: 92px;
         border-radius: 4px;
+        background-image: url("./assets/lianjieyi.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
       }
       .img-list-img2 {
-        background-color: green;
         flex: 1;
         height: 92px;
         border-radius: 4px;
+        background-image: url("./assets/lianjieer.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
       }
       .img-list-img3 {
         background-color: yellow;
         flex: 1;
         height: 92px;
         border-radius: 4px;
+        background-image: url("./assets/lianjiesan.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
       }
     </style>
-
+    <!-- 活动风采 -->
     <style>
       .activity-style {
         gap: 15px;
@@ -276,6 +290,7 @@
     <!-- 友情链接 -->
     <style>
       .friendly-links {
+        background-color: white;
       }
       .friendly-links-text {
         color: rgba(255, 63, 59, 1);
@@ -295,7 +310,7 @@
     <!-- footer -->
     <style>
       .footer {
-        margin-top: 20px;
+        /* margin-top: 20px; */
         background: #474e62;
         border: 1px solid #979797;
         padding: 34px 0px;
@@ -372,11 +387,12 @@
                 </el-col>
                 <el-col :span="5" class="head-nav-search" style="height: 100%">
                   <el-input
-                    placeholder="请输入关键词进行搜索"
-                    v-model="headInput"
-                    clearable
-                  >
-                  </el-input>
+                      placeholder="请输入关键词进行搜索"
+                      v-model="headInput"
+                      suffix-icon="el-icon-search"
+                      clearable
+                    >
+                    </el-input>
                 </el-col>
               </el-row>
             </div>
@@ -583,7 +599,10 @@
             </div>
           </div>
 
-          <div class="activity-style" style="margin-top: 20px">
+          <div
+            class="activity-style"
+            style="margin-top: 20px; padding: 12px 20px"
+          >
             <div>
               <div class="dynamic-title common-title-text">活动风采</div>
               <div class="common-line"></div>
@@ -624,7 +643,10 @@
             </div>
           </div>
 
-          <div class="friendly-links" style="margin-top: 20px">
+          <div
+            class="friendly-links"
+            style="margin-top: 20px; padding: 12px 20px"
+          >
             <div>
               <div class="dynamic-title common-title-text">友情链接</div>
               <div class="common-line"></div>
